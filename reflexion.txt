@@ -1,0 +1,34 @@
+pour la lecture du fichier csv:
+	pour chaque ligne, je dois séparer la chaine par les ";"
+	après, 	je prend ce qu'il y a avant la première virgule pour le typedu point
+		je prend ce qu'il y a entre la première virgule et le premier ":" pour le nom du point
+	après, je fais une boucle jusqu'à ce que je trouve ";;" ou à chaque fois je créer un lien avec:
+		avant la virgule, le type de lien
+		avant les "::" la distance
+		le point en deb de ligne et le pointDep
+		créer si il existe pas encore le point qu'il y a après le "::"
+
+
+
+	donc dans la fonction, je vais verifier si dans le Split c'est l'indice 0
+		si oui, je vais créer si il exite pas encore le Noeud
+		puis je fais le premier lien
+	sinon, je 
+
+
+
+
+
+
+V, Macon: A,30::R,Les Echets;		N, 50::V, Villeurbanne;		N,50::V, Villeurbanne;		A,60::V,Meyzieu;	; //je split la ligne avec les ";"
+
+V, Macon	: 	A,30	:	:	R,Les Echets; // Pour chauque partie, je resplit avec les ":"
+							      // La j'ai pour [0] une location
+										[1] un lien
+										[2] rien
+										[3] une location
+					
+					N, 50	  :	:     V, Villeurbanne;
+								      // La j'ai pour [0] un lien
+										[1] rien
+										[2] une location
