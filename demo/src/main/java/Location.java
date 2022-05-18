@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Location {
-    Character type;
-    String name;
-    ArrayList<Path> neighbourPaths = new ArrayList<>();
+    private Character type;
+    private String name;
+    private ArrayList<Path> neighbourPaths = new ArrayList<>();
     
     public Location(Character newType, String newName){
         this.type = newType;

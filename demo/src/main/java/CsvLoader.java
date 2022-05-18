@@ -5,7 +5,7 @@ import java.io.IOException;
 public abstract class CsvLoader {
     
     // a opti sur les verifications, on peut en avoir moins.
-    public static boolean Loader(String CsvAbsolutePath, ListLocation LocationList){
+    public static boolean Loader(String CsvAbsolutePath, ListLocation LocationList, graphItem graph){
         boolean operation = false;
 
         Location tmpLocation;
@@ -41,6 +41,8 @@ public abstract class CsvLoader {
                 tmpPath = new Path(tmpPathInfo[0].charAt(0), LocationList.getByIndex(indStart), LocationList.getByIndex(indArrival),Float.parseFloat(tmpPathInfo[1]));
 
                 LocationList.getByIndex(indStart).addNeightbour(tmpPath);
+
+                graph.linkNode(tmpPath.getStartLocation().getName(), tmpPath.getArrivalLocation().getName(),tmpPath.getDistance());
             }
             else{ //et sinon, on va lui affecter ses voisin , et créer le voisin si il n'existe pas
 
@@ -53,6 +55,7 @@ public abstract class CsvLoader {
                 tmpPath = new Path(tmpPathInfo[0].charAt(0), LocationList.getByIndex(indStart), LocationList.getByIndex(indArrival),Float.parseFloat(tmpPathInfo[1]));
 
                 LocationList.getByIndex(indStart).addNeightbour(tmpPath);
+                graph.linkNode(tmpPath.getStartLocation().getName(), tmpPath.getArrivalLocation().getName(),tmpPath.getDistance());
 
 
             }
@@ -60,6 +63,7 @@ public abstract class CsvLoader {
         }
 
         }
+        br.close();
     }
     catch(IOException e)  {
         e.printStackTrace();  

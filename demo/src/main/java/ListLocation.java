@@ -1,10 +1,18 @@
 import java.util.ArrayList;
 
-public class ListLocation {
-    ArrayList<Location> LocationList = new ArrayList<>();
+import org.graphstream.graph.*;
+import org.graphstream.graph.implementations.*;
 
-    public ListLocation(){
+import org.graphstream.ui.spriteManager.Sprite.*;
+import org.graphstream.ui.spriteManager.SpriteManager.*;
+
+public class ListLocation {
+    private ArrayList<Location> LocationList = new ArrayList<>();
+    private graphItem graph;
+
+    public ListLocation(graphItem theGraph){
         LocationList.clear();// pour avoir la liste vide à la création
+        graph = theGraph;
     }
 
     // a opti avec le ind de retour voir si je le laisse ou si je renvoie l'ind dans tous les cas
@@ -14,12 +22,26 @@ public class ListLocation {
     //we suppose that two different location can't have the same name
     public int addLocation(Location loc){
         int ind;
-        if (this.containByName(loc.getName())!=true) { //on verifie que la liste n'a pas déjà le lieux
+        String name = loc.getName();
+        if (this.containByName(name)== false) { //on verifie que la liste n'a pas déjà le lieux
             LocationList.add(loc);
             ind = -1;
+            graph.addNode(name);
+            Node tmpNode = graph.getGraph().getNode(name);
+            switch (loc.getType()) {
+                case 'V':
+                    tmpNode.setAttribute("ui.style", "shape:circle;fill-color: yellow;size: 30px;");
+                    break;
+                case 'L':
+                    tmpNode.setAttribute("ui.style", "shape:circle;fill-color: red;size: 30px;");
+                    break;
+                default:
+                    break;
+            }
+            tmpNode.setAttribute("ui.label", name);
         }
         else{
-            ind = this.getByName(loc.getName());
+            ind = this.getByName(name);
         }
 
         return ind;
@@ -30,9 +52,10 @@ public class ListLocation {
     public boolean containByName(String name){
         boolean result = false;
 
-        for (Location location : LocationList) {
-            if (location.getName() == name) {
+        for (Location tmpLocation : LocationList) {
+            if (tmpLocation.getName().equals(name)) {
                 result = true;
+                System.out.println("contain the name :"+name);
             }
         }
 
@@ -45,7 +68,7 @@ public class ListLocation {
     public int getByName(String name){
         int i =0;
         int size = LocationList.size();
-        while (i<size && LocationList.get(i).getName() != name){
+        while (i<size && LocationList.get(i).getName().equals(name)==false){
             i++;
         }
         if (i>size) {

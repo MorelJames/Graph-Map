@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class Path {
-    Character type;
-    Location startLocation;
-    Location arrivalLoaction;
-    float distance;
+    private Character type;
+    private Location startLocation;
+    private Location arrivalLoaction;
+    private float distance;
 
     public Path(Character newtype, Location newStartLocation, Location newArrivalLocation, float newDistance){ //classe qui représente le lien/chemin qu'il y a entre deux lieux
         this.type = newtype;
