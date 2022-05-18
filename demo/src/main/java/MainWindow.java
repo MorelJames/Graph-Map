@@ -37,6 +37,9 @@ public class MainWindow extends JFrame{
         theBorder.add(rty,BorderLayout.CENTER);
         Dimension dim = new DimensionUIResource(210, 210);
         theBorder.add(new JLabel("un texte juste pour tester"),BorderLayout.NORTH);
+        theBorder.add(new JLabel("un texte juste pour tester"),BorderLayout.WEST);
+        theBorder.add(new JLabel("un texte juste pour tester"),BorderLayout.EAST);
+        theBorder.add(new JLabel("un texte juste pour tester"),BorderLayout.SOUTH);
         this.getrty().setPreferredSize(dim);
         return theBorder;
     }
