@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 
 import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
-
+import org.graphstream.ui.layout.Layout;
 import org.graphstream.ui.spriteManager.Sprite.*;
 import org.graphstream.ui.spriteManager.SpriteManager.*;
 
@@ -35,9 +35,14 @@ public class graphItem {
 
     public JPanel createView(){
         Viewer viewer = new SwingViewer(this.getGraph(), Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
+        viewer.enableAutoLayout();
         View view = viewer.addDefaultView(false);
 
         return (JPanel) view;
+    }
+
+    public void clearGraph(){
+        this.getGraph().clear();
     }
 
 

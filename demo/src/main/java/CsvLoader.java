@@ -16,6 +16,8 @@ public abstract class CsvLoader {
         int indStart =0;
         int indArrival;
         String line = "";  
+        LocationList.listClear();
+        graph.clearGraph();
     try{
         BufferedReader br = new BufferedReader(new FileReader(CsvAbsolutePath));  
 

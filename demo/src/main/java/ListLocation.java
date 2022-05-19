@@ -11,7 +11,6 @@ public class ListLocation {
     private graphItem graph;
 
     public ListLocation(graphItem theGraph){
-        LocationList.clear();// pour avoir la liste vide à la création
         graph = theGraph;
     }
 
@@ -92,6 +91,10 @@ public class ListLocation {
         }
 
         return toStringResult.toString();
+    }
+
+    public void listClear(){
+        LocationList.clear();
     }
 
 }
