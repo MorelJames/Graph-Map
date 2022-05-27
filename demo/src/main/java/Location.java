@@ -22,6 +22,10 @@ public class Location {
         return type;
     }
 
+    public ArrayList<Path> getNeighbourPaths(){
+        return neighbourPaths;
+    }
+
 
     public String toString(){
         StringBuffer toStringResult = new StringBuffer("City : ");

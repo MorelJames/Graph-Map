@@ -3,14 +3,16 @@ import javax.swing.plaf.DimensionUIResource;
 
 import java.awt.*;
 
-import org.graphstream.graph.Graph;
+
+import org.graphstream.ui.graphicGraph.GraphicGraph;
 import org.graphstream.ui.view.View;
-import org.graphstream.ui.view.Viewer;
 
 public class MainWindow extends JFrame{
     private graphItem graph ;
     private ListLocation list ;
     private JPanel theBorder;
+    private GraphicGraph grapic;
+    private View view;
 
     //rennomer
     public MainWindow(){
@@ -54,9 +56,11 @@ public class MainWindow extends JFrame{
     private JMenuBar buildMenuBar(){
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("File");
+        JMenu actionMenu = new JMenu("Action");
         menuBar.add(menu);
+        menuBar.add(actionMenu);
 
-        menu.add(new JButton(new FileChooser("Open File", this)));
+        menu.add(new JButton(new OpenFileAction("Open File", this)));
 
         return menuBar;
     }
@@ -72,6 +76,22 @@ public class MainWindow extends JFrame{
 
     public ListLocation getListLocation(){
         return list;
+    }
+
+    public View getView(){
+        return view;
+    }
+
+    public GraphicGraph getGraphicGraph(){
+        return grapic;
+    }
+
+    public void setView(View newView){
+         view = newView;
+    }
+
+    public void setGraphicGrpah(GraphicGraph newGraphic){
+        grapic = newGraphic;
     }
 
 }
