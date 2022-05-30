@@ -51,6 +51,11 @@ public class graphItem {
         this.getGraph().clear();
     }
 
+    public void allNode(){
+        for (Node node : graph) {
+            System.out.println(node.getId());
+        }
+    }
 
     
 }
