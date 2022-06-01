@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.io.File;
 
@@ -9,6 +10,7 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.text.View;
 
 import org.graphstream.ui.graphicGraph.GraphicGraph;
+import org.graphstream.ui.swing_viewer.DefaultView;
 
 public class OpenFileAction extends AbstractAction{
     private String path;
@@ -42,14 +44,20 @@ public class OpenFileAction extends AbstractAction{
             CsvLoader.Loader(path, window.getListLocation(), window.getFullGraph());
 
             window.setGraphicGrpah(window.getFullGraph().createGraphicGraph());
-            window.setView(window.getFullGraph().createView());
+            window.setView((DefaultView) window.getFullGraph().createView());
 
             JPanel panel = window.getMainPanel();
             JPanel view = (JPanel) window.getView();
             window.setMouseManage(new MouseManage(window.getView(),window.getGraphicGraph()));
             view.addMouseListener(window.getMouseManage());
+            view.setPreferredSize(new Dimension(800,600));
             //window.setGraphPanel(view);
-            panel.add(((JPanel)view),BorderLayout.CENTER);
+            JPanel content = new JPanel();
+            content.add(view);
+            panel.remove(4);
+            panel.add(content,BorderLayout.CENTER);
+            window.getMainPanel().repaint();
+            window.getMainPanel().validate();
         }
         
     }

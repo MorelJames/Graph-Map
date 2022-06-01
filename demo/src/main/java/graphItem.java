@@ -9,7 +9,7 @@ import org.graphstream.ui.graphicGraph.GraphicGraph;
 import org.graphstream.ui.layout.Layout;
 import org.graphstream.ui.spriteManager.Sprite.*;
 import org.graphstream.ui.spriteManager.SpriteManager.*;
-
+import org.graphstream.ui.swing_viewer.DefaultView;
 import org.graphstream.ui.swing_viewer.SwingViewer;
 import org.graphstream.ui.swing_viewer.ViewPanel;
 import org.graphstream.ui.view.View;
@@ -35,11 +35,10 @@ public class graphItem {
     }
 
     public View createView(){
-        Viewer viewer = new SwingViewer(this.getGraph(), Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
+        SwingViewer viewer = new SwingViewer(this.getGraph(), Viewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
         viewer.enableAutoLayout();
-        View view = viewer.addDefaultView(false);
+        return (DefaultView) viewer.addDefaultView(false);
 
-        return view;
     }
 
     public GraphicGraph createGraphicGraph(){

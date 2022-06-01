@@ -24,6 +24,8 @@ public class ShowNeighbourGraph extends AbstractAction{
         graph.allNode();
         window.getMainPanel().remove(4);
         window.getMainPanel().add((JPanel) graph.createView());
+        window.getMainPanel().repaint();
+        window.getMainPanel().validate();
         
     }
     

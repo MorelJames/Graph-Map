@@ -1,10 +1,10 @@
 import javax.swing.*;
-import javax.swing.plaf.DimensionUIResource;
 
 import java.awt.*;
 
 
 import org.graphstream.ui.graphicGraph.GraphicGraph;
+import org.graphstream.ui.swing_viewer.DefaultView;
 import org.graphstream.ui.view.View;
 
 public class MainWindow extends JFrame{
@@ -14,13 +14,14 @@ public class MainWindow extends JFrame{
     private JPanel mainPanel;
     private JPanel graphPanel;
     private GraphicGraph grapic;
-    private View view;
+    private DefaultView view;
     private MouseManage mouseManage;
 
     //rennomer
     public MainWindow(){
         super();
         fullGraph = new graphItem();
+        view = (DefaultView) fullGraph.createView();
         neighbourGraph = new graphItem();
         list = new ListLocation(fullGraph);
         BuildWindow();
@@ -53,6 +54,7 @@ public class MainWindow extends JFrame{
         mainPanel.add(new JLabel("un texte juste pour tester"),BorderLayout.WEST);
         mainPanel.add(new JButton(new ShowNeighbourGraph("Show neigbour of selected location", this)),BorderLayout.EAST);
         mainPanel.add(new JLabel("un texte juste pour tester"),BorderLayout.SOUTH);
+        mainPanel.add(view);
         
         return mainPanel;
     }
@@ -97,7 +99,7 @@ public class MainWindow extends JFrame{
         return grapic;
     }
 
-    public void setView(View newView){
+    public void setView(DefaultView newView){
          view = newView;
     }
 

@@ -17,7 +17,10 @@ public class ShowFullGraphAction extends AbstractAction{
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("action full graph");
-        window.setGraphPanel(((JPanel) window.getView()));
+        window.getMainPanel().remove(4);
+        window.getMainPanel().add((JPanel) window.getView());
+        window.getMainPanel().repaint();
+        window.getMainPanel().validate();
         
     }
     
